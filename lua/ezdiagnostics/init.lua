@@ -79,7 +79,9 @@ function M.setup(config)
 	config.margin = config.margin or 2
 	config.width = config.width or 60
 
-	vim.api.nvim_create_user_command("AllDiag", M.open_diagnostics_buffer, {})
+	vim.api.nvim_create_user_command("AllDiag", function()
+		M.open_diagnostics_buffer(config)
+	end, {})
 	vim.keymap.set("n", config.cmd, ":AllDiag<CR>")
 end
 
